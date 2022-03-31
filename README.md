@@ -1,1 +1,1 @@
-# Uber-IOS-rethink
+# Study Uber app in IOS
