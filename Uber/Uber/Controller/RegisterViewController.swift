@@ -35,7 +35,7 @@ class RegisterViewController: UIViewController {
                                 //Verifica o tipo do usuario
                                  var userType = ""
                                 if self.switch.isOn { //Vericando caso o switch esteja ativo ou nao
-                                    userType = "usuario"
+                                    userType = "passageiro"
                                 }
                                 else{
                                     userType = "motorista"
@@ -48,10 +48,10 @@ class RegisterViewController: UIViewController {
                                 //Validando se o usuario foi autenticado
                                 if user != nil{
                                     let userData = [ //setando dados do usuario
-                                        "email": user?.user.email,
+                                        "email": email,
                                         "nome": name,
                                         "tipo": userType
-                                    ]
+                                    ] as [ String : Any ]
                                    
                                     users.child((user?.user.uid)!).setValue(userData) //Criando nó com id gerado para usuario cadastrado e setando dados desse usuario, assim o criando
                                 }
