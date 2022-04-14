@@ -85,6 +85,10 @@ class PassengerViewController: UIViewController,MKMapViewDelegate,CLLocationMana
                         }else if(status == runStatus.startedTrip.rawValue){
                             self.switchButtonStartedTrip()
                             
+                        }else if(status == runStatus.finishedTrip.rawValue){
+                            if let price = data["precoViagem"] as? Double{
+                                self.switchButtonFinishedTrip(price: price)
+                            }
                         }
                     }
                 }
@@ -320,6 +324,21 @@ class PassengerViewController: UIViewController,MKMapViewDelegate,CLLocationMana
         
    
     }
+    func switchButtonFinishedTrip(price : Double){
+        //Formata o numero
+        let nf = NumberFormatter()
+        nf.numberStyle = .decimal
+        nf.maximumFractionDigits = 2
+        nf.locale = Locale(identifier: "pt_BR")
+        let finalPrice = nf.string(from: NSNumber(value: price))
+        
+        
+        self.buttonCallUber.setTitle("Viagem finalizada - R$\(finalPrice!) ", for: .normal)
+        self.buttonCallUber.isEnabled = false
+        self.buttonCallUber.backgroundColor = UIColor(displayP3Red: 0.502, green: 0.502, blue: 0.502, alpha: 1)
+            
+    }
+    
     func switchButtonStartedTrip(){
         self.buttonCallUber.setTitle("Em viagem", for: .normal)
         self.buttonCallUber.isEnabled = false

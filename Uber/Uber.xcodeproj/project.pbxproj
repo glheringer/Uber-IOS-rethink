@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		46039D7827FB3B8A00BF5595 /* DriverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46039D7727FB3B8A00BF5595 /* DriverTableViewController.swift */; };
 		46039D7C27FDC26E00BF5595 /* RunViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46039D7B27FDC26E00BF5595 /* RunViewController.swift */; };
+		461DD53A28085EFA00CD1A85 /* runStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461DD53928085EFA00CD1A85 /* runStatus.swift */; };
 		465C25A627F5E52300CD2E39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465C25A527F5E52300CD2E39 /* AppDelegate.swift */; };
 		465C25A827F5E52300CD2E39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465C25A727F5E52300CD2E39 /* SceneDelegate.swift */; };
 		465C25AA27F5E52300CD2E39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 465C25A927F5E52300CD2E39 /* ViewController.swift */; };
@@ -27,6 +28,7 @@
 		409A567820B6E48F7F7554A6 /* Pods-Uber.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uber.debug.xcconfig"; path = "Target Support Files/Pods-Uber/Pods-Uber.debug.xcconfig"; sourceTree = "<group>"; };
 		46039D7727FB3B8A00BF5595 /* DriverTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DriverTableViewController.swift; sourceTree = "<group>"; };
 		46039D7B27FDC26E00BF5595 /* RunViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunViewController.swift; sourceTree = "<group>"; };
+		461DD53928085EFA00CD1A85 /* runStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = runStatus.swift; sourceTree = "<group>"; };
 		465C25A227F5E52300CD2E39 /* Uber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Uber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		465C25A527F5E52300CD2E39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		465C25A727F5E52300CD2E39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				465C25AE27F5E52500CD2E39 /* Assets.xcassets */,
 				465C25B027F5E52500CD2E39 /* LaunchScreen.storyboard */,
 				465C25B327F5E52500CD2E39 /* Info.plist */,
+				461DD53928085EFA00CD1A85 /* runStatus.swift */,
 			);
 			path = Uber;
 			sourceTree = "<group>";
@@ -245,6 +248,7 @@
 				465C25A627F5E52300CD2E39 /* AppDelegate.swift in Sources */,
 				465C25A827F5E52300CD2E39 /* SceneDelegate.swift in Sources */,
 				46039D7827FB3B8A00BF5595 /* DriverTableViewController.swift in Sources */,
+				461DD53A28085EFA00CD1A85 /* runStatus.swift in Sources */,
 				46E6741727F666760045C12F /* PassengerViewController.swift in Sources */,
 				465C25C027F5FA7100CD2E39 /* SignInViewController.swift in Sources */,
 				46039D7C27FDC26E00BF5595 /* RunViewController.swift in Sources */,

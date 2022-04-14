@@ -16,7 +16,6 @@ class DriverTableViewController: UITableViewController, CLLocationManagerDelegat
     var requestList : [DataSnapshot] = []
     let locationManager = CLLocationManager()
     var driverLocation = CLLocationCoordinate2D()
-    var timerController = Timer()
     
     @IBAction func userLogout(_ sender: Any) {
         
@@ -37,18 +36,24 @@ class DriverTableViewController: UITableViewController, CLLocationManagerDelegat
         
         //Limpar lista inicialmente
         self.requestList = []
-        self.requestList
         
         //Configurar banco de dados
         let database = Database.database().reference()
         let request = database.child("requisicao")
         
-//        //Recuperar requisicoes
-//        request.observe(.childAdded) { (snapshot) in
-//            
-//            self.requestList.append(snapshot)
-//            self.tableView.reloadData()
-//        }
+        //Recuperar requisicoes
+        request.observe(.value) { (snapshot) in
+            
+            self .requestList = []
+            if snapshot.value != nil {
+                for child in snapshot.children{
+                    
+                    self.requestList.append(child as! DataSnapshot)
+                    
+                }
+            }
+            self.tableView.reloadData()
+        }
         
         //Limpa requisicao caso o usuario cancele o uber
         request.observe(.childRemoved) { (snapshot) in
@@ -63,40 +68,6 @@ class DriverTableViewController: UITableViewController, CLLocationManagerDelegat
             }
             self.tableView.reloadData()
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        self.recoverRequest()
-        
-        Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { (timer) in
-            
-            self.recoverRequest()
-            self.timerController = timer
-        }
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        
-        self.timerController.invalidate()
-        
-    }
-    
-    func recoverRequest(){
-
-        //Configurar banco de dados
-        let database = Database.database().reference()
-        let request = database.child("requisicao")
-        
-        //Limpar a atual lista de requisicoes
-        self.requestList = []
-        
-        //Recuperar requisicoes
-        request.observeSingleEvent(of: .childAdded) { (snapshot) in
-            
-            self.requestList.append(snapshot)
-            self.tableView.reloadData()
-        }
-        
     }
     
     //Configurar Localizacao do Motorista
@@ -187,6 +158,11 @@ class DriverTableViewController: UITableViewController, CLLocationManagerDelegat
                         if let loggedDriver = auth.currentUser?.email{
                             if driverEmailR == loggedDriver{
                                 driverRequest = " {ANDAMENTO} "
+                                if let status = data["status"] as? String{
+                                    if status == runStatus.finishedTrip.rawValue{
+                                        driverRequest = " {FINALIZADA} "
+                                    }
+                                }
                             }
                             else{
                                 print("Erro ao definir status")
